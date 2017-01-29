@@ -1,17 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="MusicClasswork.aspx.cs" Inherits="MyNotebooks.Notebooks.Classwork.MusicClasswork" %>
+<%@ Register Src="../Controls/NotebookControl.ascx" TagPrefix="uc" TagName="NotebookView" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-    <div class="jumbotron">
-        <h2 class="text-center">Тетрадка по музика</h2>
-        <div class="container">
-            <div class="row">
-                <div class="form-group">
-                    <label for=" Email1msg">Работа в клас:</label>
-                    <br>
-                    <asp:TextBox TextMode="MultiLine" Rows="10" Columns="92" ID="TextContent" runat="server"></asp:TextBox>
-                </div>
-                <asp:Button ID="SaveButton" CssClass="btn-lg btn-primary cursorDefault" runat="server" Text="Запиши промените" />
-            </div>
-        </div>
-    </div>
+    <uc:NotebookView runat="server" Subject="Music" Type="Classwork" NotebookType="Работа в клас:" NotebookTitle="музика"/>
 </asp:Content>

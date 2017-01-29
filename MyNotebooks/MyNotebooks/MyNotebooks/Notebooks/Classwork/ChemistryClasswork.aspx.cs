@@ -1,30 +1,23 @@
-﻿using MyNotebooks.Services.Services;
+﻿using MyNotebooks.Core.Models;
+using MyNotebooks.Core.Presenters;
+using MyNotebooks.Core.Views;
+using MyNotebooks.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace MyNotebooks.Notebooks.Classwork
 {
-    public partial class ChemistryClasswork : System.Web.UI.Page
+    public partial class ChemistryClasswork : Page
     {
-        private NotebookService notebookService;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.notebookService = new NotebookService("Chemistry", "Classwork", User.Identity.Name);
-            this.SaveButton.Click += SaveButton_Click;
-            if (this.TextContent.Text == "")
-            {
-                this.TextContent.Text = this.notebookService.GetContent();
-            }
-        }
-
-        protected void SaveButton_Click(object sender, EventArgs e)
-        {
-            this.notebookService.SaveContent(this.TextContent.Text);
+        
         }
     }
 }

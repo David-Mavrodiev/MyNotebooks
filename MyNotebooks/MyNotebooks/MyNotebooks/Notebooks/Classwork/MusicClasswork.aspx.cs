@@ -10,21 +10,9 @@ namespace MyNotebooks.Notebooks.Classwork
 {
     public partial class MusicClasswork : System.Web.UI.Page
     {
-        private NotebookService notebookService;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.notebookService = new NotebookService("Music", "Classwork", User.Identity.Name);
-            this.SaveButton.Click += SaveButton_Click;
-            if (this.TextContent.Text == "")
-            {
-                this.TextContent.Text = this.notebookService.GetContent();
-            }
-        }
 
-        protected void SaveButton_Click(object sender, EventArgs e)
-        {
-            this.notebookService.SaveContent(this.TextContent.Text);
         }
     }
 }

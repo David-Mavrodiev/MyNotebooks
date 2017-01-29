@@ -83,6 +83,10 @@
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="WebFormsMvp, Version=1.4.5.0, Culture=neutral, PublicKeyToken=537f18701145dff0, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebFormsMvp.1.4.5.0\lib\WebFormsMvp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -207,6 +211,7 @@
     <Content Include="Notebooks\Classwork\MusicClasswork.aspx" />
     <Content Include="Notebooks\Classwork\PhysicsClasswork.aspx" />
     <Content Include="Notebooks\Classwork\PsychologyClasswork.aspx" />
+    <Content Include="Notebooks\Controls\NotebookControl.ascx" />
     <Content Include="Notebooks\Draw.aspx" />
     <Content Include="Notebooks\English.aspx" />
     <Content Include="Notebooks\Geography.aspx" />
@@ -514,6 +519,13 @@
     <Compile Include="Notebooks\Classwork\PsychologyClasswork.aspx.designer.cs">
       <DependentUpon>PsychologyClasswork.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Notebooks\Controls\NotebookControl.ascx.cs">
+      <DependentUpon>NotebookControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Notebooks\Controls\NotebookControl.ascx.designer.cs">
+      <DependentUpon>NotebookControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Notebooks\Draw.aspx.cs">
       <DependentUpon>Draw.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -689,6 +701,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyNotebooks.Core\MyNotebooks.Core.csproj">
+      <Project>{617FC8A1-78A9-422B-944F-216A54A67DBD}</Project>
+      <Name>MyNotebooks.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyNotebooks.Data\MyNotebooks.Data.csproj">
       <Project>{D01C9493-6B35-43A8-A7F1-DC0020B582A5}</Project>
       <Name>MyNotebooks.Data</Name>

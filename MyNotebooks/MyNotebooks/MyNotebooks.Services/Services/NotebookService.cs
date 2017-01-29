@@ -1,5 +1,6 @@
 ﻿using MyNotebooks.Data;
 using MyNotebooks.Data.Models;
+using MyNotebooks.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyNotebooks.Services.Services
 {
-    public class NotebookService
+    public class NotebookService : INotebookService
     {
         private string type, subject, username;
         private NotebooksDbContext notebookDbContext;
