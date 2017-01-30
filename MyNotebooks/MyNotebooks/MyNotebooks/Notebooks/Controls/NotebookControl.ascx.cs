@@ -1,5 +1,6 @@
 ﻿using MyNotebooks.Core.Models;
 using MyNotebooks.Core.Presenters;
+using MyNotebooks.Core.Presenters.Contracts;
 using MyNotebooks.Core.Views;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using WebFormsMvp.Web;
 
 namespace MyNotebooks.Notebooks.Controls
 {
-    [PresenterBinding(typeof(NotebookPresenter))]
+    [PresenterBinding(typeof(INotebookPresenter))]
     public partial class NotebookControl : MvpUserControl<NotebookModel>, INotebookView
     {
         public string Content

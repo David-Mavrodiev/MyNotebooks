@@ -741,6 +741,10 @@
       <Project>{617FC8A1-78A9-422B-944F-216A54A67DBD}</Project>
       <Name>MyNotebooks.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyNotebooks.DataModels\MyNotebooks.DataModels.csproj">
+      <Project>{0F187EF2-4307-43A7-814D-08389DF9B9A3}</Project>
+      <Name>MyNotebooks.DataModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyNotebooks.Data\MyNotebooks.Data.csproj">
       <Project>{D01C9493-6B35-43A8-A7F1-DC0020B582A5}</Project>
       <Name>MyNotebooks.Data</Name>

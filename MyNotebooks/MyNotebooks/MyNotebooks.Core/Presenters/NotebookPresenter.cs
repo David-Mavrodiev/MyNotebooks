@@ -1,4 +1,5 @@
-﻿using MyNotebooks.Core.Views;
+﻿using MyNotebooks.Core.Presenters.Contracts;
+using MyNotebooks.Core.Views;
 using MyNotebooks.Services.Contracts;
 using MyNotebooks.Services.Services;
 using System;
@@ -10,14 +11,10 @@ using WebFormsMvp;
 
 namespace MyNotebooks.Core.Presenters
 {
-    public class NotebookPresenter : Presenter<INotebookView>
+    public class NotebookPresenter : Presenter<INotebookView>, INotebookPresenter
     {
         private INotebookService service;
         private INotebookView view;
-
-        /*public NotebookPresenter(INotebookView view) : this(view, new NotebookService(view.Subject, view.Type, view.Username))
-        {
-        }*/
 
         public NotebookPresenter(INotebookView view, INotebookService service) : base(view)
         {

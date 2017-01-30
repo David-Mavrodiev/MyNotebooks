@@ -7,6 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MyNotebooks.Data.AssemblyId;
+using MyNotebooks.Data.Contracts;
+using MyNotebooks.Data.Models;
+using MyNotebooks.Data.Repositories;
+using MyNotebooks.Data;
+using MyNotebooks.Data.UnitOfWorks;
 
 namespace MyNotebooks.App_Start.NinjectBindingsModules
 {
@@ -14,42 +20,21 @@ namespace MyNotebooks.App_Start.NinjectBindingsModules
     {
         public override void Load()
         {
-            /*this.Kernel.Bind(x =>
+            this.Kernel.Bind(x =>
                 x.FromAssemblyContaining<IDataAssemblyId>()
                 .SelectAllClasses()
                 .BindDefaultInterface()
             );
 
-            this.Bind<IDisposableUnitOfWork>().To<UnitOfWork>();
+            this.Kernel.Bind<NotebooksDbContext>().To<NotebooksDbContext>().InSingletonScope();
+            this.Bind<INotebookDbContext>().To<NotebooksDbContext>().InSingletonScope();
 
-            this.Bind<IDisposableUnitOfWorkFactory>()
-                .ToFactory()
-                .InSingletonScope();
+            this.Bind<IUnitOfWork>().ToConstructor(c => new EfUnitOfWork( new NotebooksDbContext()));
+            
 
-            this.Bind(typeof(IAsyncRepository<>))
-                .To<AsyncGenericRepository<Worker>>()
-                .WhenInjectedInto<WorkersDataService>()
-                .InSingletonScope();
-
-            this.Bind<IWhenItsDoneDbContext>()
-                .To<WhenItsDoneDbContext>()
-                .InRequestScope();
-
-            this.Bind<IStatefulFactory>().ToFactory().InSingletonScope();*/
-
-            // if binding above do not work change with code below maybe
-
-            //this.Bind(typeof(IStateful<>)).ToMethod(ctx =>
-            //{
-            //    var param = ctx.Parameters.Single();
-
-            //    var result = ctx.Kernel.Get(typeof(IStateful<>), param);
-
-            //    return result;
-            //})
-            //.InSingletonScope()
-            //// GetStateful<object> ?!?
-            //.NamedLikeFactoryMethod((IStatefulFactory fac) => fac.GetStateful<object>(null));
+            //this.Bind<INotebooksRepository>().ToConstructor(c => new NotebooksRepository(new NotebooksDbContext()));
+            // this.Bind<INotebooksRepository>().To<NotebooksRepository>();
+            //this.Bind<INotebookDbContext>().To<NotebooksDbContext>().InSingletonScope();
         }
     }
 }

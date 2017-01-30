@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AssemblyId\ICoreAssemblyId.cs" />
     <Compile Include="Models\NotebookModel.cs" />
+    <Compile Include="Presenters\Contracts\INotebookPresenter.cs" />
     <Compile Include="Presenters\NotebookPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\INotebookView.cs" />
@@ -55,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyNotebooks.DataModels\MyNotebooks.DataModels.csproj">
+      <Project>{0F187EF2-4307-43A7-814D-08389DF9B9A3}</Project>
+      <Name>MyNotebooks.DataModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyNotebooks.Data\MyNotebooks.Data.csproj">
       <Project>{D01C9493-6B35-43A8-A7F1-DC0020B582A5}</Project>
       <Name>MyNotebooks.Data</Name>
