@@ -15,9 +15,9 @@ namespace MyNotebooks.Core.Presenters
         private INotebookService service;
         private INotebookView view;
 
-        public NotebookPresenter(INotebookView view) : this(view, new NotebookService(view.Subject, view.Type, view.Username))
+        /*public NotebookPresenter(INotebookView view) : this(view, new NotebookService(view.Subject, view.Type, view.Username))
         {
-        }
+        }*/
 
         public NotebookPresenter(INotebookView view, INotebookService service) : base(view)
         {
@@ -25,6 +25,10 @@ namespace MyNotebooks.Core.Presenters
             view.SaveChanges += SaveChanges;
             this.view = view;
             this.service = service;
+            this.service.Subject = this.view.Subject;
+            this.service.Type = this.view.Type;
+            this.service.Username = this.view.Username;
+            this.service.Initialize();
         }
 
         public void Load(object sender, EventArgs e)

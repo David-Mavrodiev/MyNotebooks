@@ -15,11 +15,20 @@ namespace MyNotebooks.Services.Services
         private NotebooksDbContext notebookDbContext;
         private Notebook notebook;
 
+        public NotebookService()
+        {
+           
+        }
+
         public NotebookService(string subject, string type, string username)
         {
             this.subject = subject;
             this.type = type;
             this.username = username;
+        }
+
+        public void Initialize()
+        {
             this.notebookDbContext = new NotebooksDbContext();
             this.notebookDbContext.Database.CreateIfNotExists();
             this.notebook = this.notebookDbContext.Notebooks.SingleOrDefault(n => n.Subject == this.subject && n.Type == this.Type && n.Username == this.Username);
@@ -40,6 +49,10 @@ namespace MyNotebooks.Services.Services
             {
                 return this.subject;
             }
+            set
+            {
+                this.subject = value;
+            }
         }
 
         public string Type
@@ -48,6 +61,10 @@ namespace MyNotebooks.Services.Services
             {
                 return this.type;
             }
+            set
+            {
+                this.type = value;
+            }
         }
 
         public string Username
@@ -55,6 +72,10 @@ namespace MyNotebooks.Services.Services
             get
             {
                 return this.username;
+            }
+            set
+            {
+                this.username = value;
             }
         }
 

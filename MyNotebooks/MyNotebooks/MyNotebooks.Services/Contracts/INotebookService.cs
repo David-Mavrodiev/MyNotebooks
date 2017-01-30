@@ -9,11 +9,12 @@ namespace MyNotebooks.Services.Contracts
 {
     public interface INotebookService
     {
-        string Subject { get; }
-        string Type { get; }
-        string Username { get; }
+        string Subject { get; set; }
+        string Type { get; set; }
+        string Username { get; set; }
         Notebook Notebook { get; }
         void SaveContent(string content);
         string GetContent();
+        void Initialize();
     }
 }
