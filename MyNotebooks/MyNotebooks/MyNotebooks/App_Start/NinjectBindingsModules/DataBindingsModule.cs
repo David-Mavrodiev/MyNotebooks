@@ -2,7 +2,6 @@
 using Ninject.Extensions.Conventions;
 using Ninject.Extensions.Factory;
 using Ninject.Web.Common;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,15 +25,7 @@ namespace MyNotebooks.App_Start.NinjectBindingsModules
                 .BindDefaultInterface()
             );
 
-            this.Kernel.Bind<NotebooksDbContext>().To<NotebooksDbContext>().InSingletonScope();
-            this.Bind<INotebookDbContext>().To<NotebooksDbContext>().InSingletonScope();
-
-            this.Bind<IUnitOfWork>().ToConstructor(c => new EfUnitOfWork( new NotebooksDbContext()));
-            
-
-            //this.Bind<INotebooksRepository>().ToConstructor(c => new NotebooksRepository(new NotebooksDbContext()));
-            // this.Bind<INotebooksRepository>().To<NotebooksRepository>();
-            //this.Bind<INotebookDbContext>().To<NotebooksDbContext>().InSingletonScope();
+            this.Bind<IUnitOfWork>().To<EfUnitOfWork>();
         }
     }
 }

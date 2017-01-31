@@ -11,6 +11,8 @@ namespace MyNotebooks.Data.Contracts
     {
         void Update(Notebook entity, string content);
 
+        void setNotebookDbContext(NotebooksDbContext context);
+
         Notebook Find(string subject, string type, string username);
     }
 }

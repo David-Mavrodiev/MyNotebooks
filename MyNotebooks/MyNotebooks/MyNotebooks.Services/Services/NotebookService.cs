@@ -17,24 +17,13 @@ namespace MyNotebooks.Services.Services
         private INotebooksRepository repository;
         private IUnitOfWork unitOfWork;
 
-        public NotebookService(INotebooksRepository repository, IUnitOfWork unitOfWork)
+        public NotebookService(INotebooksRepository repository, IUnitOfWork unitOfWork, NotebooksDbContext context)
         {
-            if (repository == null || unitOfWork == null)
-            {
-                throw new Exception("Cant resolve dependencies");
-            }
-            else
-            {
-                this.repository = repository;
-                this.unitOfWork = unitOfWork;
-            }
-        }
+            this.repository = repository;
+            this.unitOfWork = unitOfWork;
 
-        public NotebookService(string subject, string type, string username)
-        {
-            this.subject = subject;
-            this.type = type;
-            this.username = username;
+            this.repository.setNotebookDbContext(context);
+            this.unitOfWork.setContext(context);
         }
 
         public void Initialize()
@@ -42,18 +31,6 @@ namespace MyNotebooks.Services.Services
             var notebook = this.repository.Find(this.subject, this.type, this.username);
             this.notebook = notebook;
             this.unitOfWork.Commit();
-            /*this.notebookDbContext = new NotebooksDbContext();
-            this.notebookDbContext.Database.CreateIfNotExists();
-            this.notebook = this.notebookDbContext.Notebooks.SingleOrDefault(n => n.Subject == this.subject && n.Type == this.Type && n.Username == this.Username);
-            if (this.notebook == null)
-            {
-                this.notebook = new Notebook();
-                this.notebook.Username = this.username;
-                this.notebook.Type = this.type;
-                this.notebook.Subject = this.subject;
-                this.notebookDbContext.Notebooks.Add(this.notebook);
-                this.notebookDbContext.SaveChanges();
-            }*/
         }
 
         public string Subject
@@ -104,8 +81,6 @@ namespace MyNotebooks.Services.Services
         {
             this.repository.Update(this.notebook, content);
             this.unitOfWork.Commit();
-            //this.notebook.Content = content;
-            //this.notebookDbContext.SaveChanges();
         }
 
         public string GetContent()

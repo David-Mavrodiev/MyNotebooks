@@ -2,7 +2,6 @@
 using Ninject.Extensions.Conventions;
 using Ninject.Extensions.Factory;
 using Ninject.Web.Common;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +9,9 @@ using System.Web;
 using MyNotebooks.Services.AssemblyId;
 using MyNotebooks.Services.Contracts;
 using MyNotebooks.Services.Services;
+using MyNotebooks.Data.Repositories;
+using MyNotebooks.Data.UnitOfWorks;
+using MyNotebooks.Data;
 
 namespace MyNotebooks.App_Start.NinjectBindingsModules
 {

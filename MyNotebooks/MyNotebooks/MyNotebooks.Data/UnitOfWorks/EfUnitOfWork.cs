@@ -10,9 +10,14 @@ namespace MyNotebooks.Data.UnitOfWorks
 {
     public class EfUnitOfWork : IUnitOfWork
     {
-        private readonly DbContext context;
+        private DbContext context;
 
-        public EfUnitOfWork(DbContext context)
+        public EfUnitOfWork()
+        {
+            
+        }
+
+        public void setContext(DbContext context)
         {
             this.context = context;
         }

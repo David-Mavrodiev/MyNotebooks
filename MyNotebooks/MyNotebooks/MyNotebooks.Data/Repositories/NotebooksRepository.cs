@@ -14,9 +14,14 @@ namespace MyNotebooks.Data.Repositories
     {
         public NotebooksDbContext Context { get; set; }
 
-        public NotebooksRepository(NotebooksDbContext context)
+        public NotebooksRepository()
         {
-            this.Context = context;   
+               
+        }
+
+        public void setNotebookDbContext(NotebooksDbContext context)
+        {
+            this.Context = context;
         }
 
         public void Add(Notebook entity)
