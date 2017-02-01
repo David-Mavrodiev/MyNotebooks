@@ -8,26 +8,88 @@ using Owin;
 using MyNotebooks.DataModels.Models;
 using MyNotebooks.Data.AccountServices;
 using MyNotebooks.Data.AccountServices.Helpers;
+using WebFormsMvp.Web;
+using MyNotebooks.Core.Presenters.Contracts;
+using WebFormsMvp;
+using MyNotebooks.Core.Models;
+using MyNotebooks.Core.Views;
+using MyNotebooks.Data.AccountServices.Contracts;
 
 namespace MyNotebooks.Account
 {
-    public partial class Register : Page
+    [PresenterBinding(typeof(IRegistrationPresenter))]
+    public partial class Register : MvpPage<RegistrationModel>, IRegistrationView
     {
-        protected void CreateUser_Click(object sender, EventArgs e)
+        public string ErrorMessageText
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-            var user = new User() { UserName = Email.Text, Email = Email.Text };
-            IdentityResult result = manager.Create(user, Password.Text);
-            if (result.Succeeded)
+            get
             {
-                signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
-                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                return this.ErrorMessage.Text;
             }
-            else 
+
+            set
             {
-                ErrorMessage.Text = result.Errors.FirstOrDefault();
+                this.ErrorMessage.Text = value;
             }
+        }
+
+        public IApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return this.Context.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+        }
+
+        public IApplicationUserManager UserManager
+        {
+            get
+            {
+                return this.Context.GetOwinContext().Get<ApplicationUserManager>();
+            }
+        }
+
+        string IRegistrationView.Email
+        {
+            get
+            {
+                return this.Email.Text;
+            }
+
+            set
+            {
+                this.Email.Text = value;
+            }
+        }
+
+        string IRegistrationView.Password
+        {
+            get
+            {
+                return this.Password.Text;
+            }
+
+            set
+            {
+                this.Password.Text = value;
+            }
+        }
+
+        public event EventHandler<EventArgs> RegisterUser;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            this.RegisterButton.Click += Clicked;
+        }
+
+        public void Clicked(object sender, EventArgs e)
+        {
+            this.RegisterUser(sender, e);
+        }
+
+        public void Redirect()
+        {
+            this.Response.Redirect("~/");
         }
     }
 }

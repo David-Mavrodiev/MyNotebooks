@@ -6,57 +6,125 @@ using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using MyNotebooks.Data.AccountServices;
 using MyNotebooks.Data.AccountServices.Helpers;
+using MyNotebooks.Core.Views;
+using MyNotebooks.Core.Models;
+using WebFormsMvp.Web;
+using MyNotebooks.Core.Presenters.Contracts;
+using WebFormsMvp;
+using MyNotebooks.Data.AccountServices.Contracts;
 
 namespace MyNotebooks.Account
 {
-    public partial class Login : Page
+    [PresenterBinding(typeof(ILoginPresenter))]
+    public partial class Login : MvpPage<LoginModel>, ILoginView
     {
+        public IApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return this.Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
+            }
+        }
+
+        public bool Remember
+        {
+            get
+            {
+                return this.RememberMe.Checked;
+            }
+            set
+            {
+                this.RememberMe.Checked = value;
+            }
+        }
+
+        string ILoginView.Password
+        {
+            get
+            {
+                return this.Password.Text;
+            }
+
+            set
+            {
+                this.Password.Text = value;
+            }
+        }
+
+        string ILoginView.Email
+        {
+            get
+            {
+                return this.Email.Text;
+            }
+
+            set
+            {
+                this.Email.Text = value;
+            }
+        }
+
+        public string ErrorMessageText
+        {
+            get
+            {
+                return this.FailureText.Text;
+            }
+
+            set
+            {
+                this.FailureText.Text = value;
+            }
+        }
+
+        public string NavigateUrl
+        {
+            get
+            {
+                return this.RegisterHyperLink.NavigateUrl;
+            }
+            set
+            {
+                this.RegisterHyperLink.NavigateUrl = value;
+            }
+        }
+
+        public bool IsPropertiesValid
+        {
+            get
+            {
+                return this.IsValid;
+            }
+        }
+
+        public event EventHandler<EventArgs> LoginUser;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterHyperLink.NavigateUrl = "Register";
-            // Enable this once you have account confirmation enabled for password reset functionality
-            //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
-            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-            if (!String.IsNullOrEmpty(returnUrl))
-            {
-                RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
-            }
+            this.LoginButton.Click += LogIn;
         }
 
         protected void LogIn(object sender, EventArgs e)
         {
-            if (IsValid)
+            this.LoginUser(sender, e);
+        }
+
+        public bool ErrorTextVisible
+        {
+            get
             {
-                // Validate the user password
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
-
-                // This doen't count login failures towards account lockout
-                // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
-
-                switch (result)
-                {
-                    case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                        break;
-                    case SignInStatus.LockedOut:
-                        Response.Redirect("/Account/Lockout");
-                        break;
-                    case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
-                                                        Request.QueryString["ReturnUrl"],
-                                                        RememberMe.Checked),
-                                          true);
-                        break;
-                    case SignInStatus.Failure:
-                    default:
-                        FailureText.Text = "Invalid login attempt";
-                        ErrorMessage.Visible = true;
-                        break;
-                }
+                return this.ErrorMessage.Visible;
             }
+
+            set
+            {
+                this.ErrorMessage.Visible = value;
+            }
+        }
+
+        public void Success()
+        {
+            this.Response.Redirect("~/");
         }
     }
 }
