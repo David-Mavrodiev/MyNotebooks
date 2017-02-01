@@ -9,120 +9,124 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using MyNotebooks.Data.AccountServices;
+using MyNotebooks.Core.Models;
+using WebFormsMvp.Web;
+using MyNotebooks.Core.Views;
+using MyNotebooks.Data.AccountServices.Contracts;
+using MyNotebooks.Core.Presenters.Contracts;
+using WebFormsMvp;
 
 namespace MyNotebooks.Account
 {
-    public partial class Manage : System.Web.UI.Page
+    [PresenterBinding(typeof(IManagePresenter))]
+    public partial class Manage : MvpPage<ManageModel>, IManageView
     {
-        protected string SuccessMessage
+        public string SuccessMessage
         {
             get;
-            private set;
+            set;
         }
-
-        private bool HasPassword(ApplicationUserManager manager)
-        {
-            return manager.HasPassword(User.Identity.GetUserId());
-        }
-
-        public bool HasPhoneNumber { get; private set; }
-
-        public bool TwoFactorEnabled { get; private set; }
-
-        public bool TwoFactorBrowserRemembered { get; private set; }
 
         public int LoginsCount { get; set; }
 
+        public IApplicationUserManager UserManager
+        {
+            get
+            {
+                return Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
+
+        public IAuthenticationManager AuthManager
+        {
+            get
+            {
+                return HttpContext.Current.GetOwinContext().Authentication;
+            }
+        }
+
+        public bool IsPostBackRequest
+        {
+            get
+            {
+                return IsPostBack;
+            }
+        }
+
+        public bool ChangePasswordVisible
+        {
+            get
+            {
+                return this.ChangePassword.Visible;
+            }
+
+            set
+            {
+                this.ChangePassword.Visible = value;
+            }
+        }
+
+        public bool CreatePasswordVisible
+        {
+            get
+            {
+                return this.CreatePassword.Visible;
+            }
+
+            set
+            {
+                this.CreatePassword.Visible = value;
+            }
+        }
+
+        bool IManageView.HasPassword
+        {
+            get
+            {
+                return Context.GetOwinContext().GetUserManager<ApplicationUserManager>().HasPassword(User.Identity.GetUserId());
+            }
+        }
+
+        public string setFormActionUrl
+        {
+            set
+            {
+                Form.Action = ResolveUrl(value);
+            }
+        }
+
+        public string RequestQueryMessage
+        {
+            get
+            {
+                return Request.QueryString["m"];
+            }
+        }
+
+        public bool SuccessMessageVisible
+        {
+            get
+            {
+                return this.successMessage.Visible;
+            }
+
+            set
+            {
+                this.successMessage.Visible = true;
+            }
+        }
+
+        public int GetLoginsCount
+        {
+            get
+            {
+                return Context.GetOwinContext().GetUserManager<ApplicationUserManager>().GetLogins(User.Identity.GetUserId()).Count;
+            }
+        }
+
         protected void Page_Load()
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));
-
-            // Enable this after setting up two-factor authentientication
-            //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
-
-            TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
-
-            LoginsCount = manager.GetLogins(User.Identity.GetUserId()).Count;
-
-            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
-
-            if (!IsPostBack)
-            {
-                // Determine the sections to render
-                if (HasPassword(manager))
-                {
-                    ChangePassword.Visible = true;
-                }
-                else
-                {
-                    CreatePassword.Visible = true;
-                    ChangePassword.Visible = false;
-                }
-
-                // Render success message
-                var message = Request.QueryString["m"];
-                if (message != null)
-                {
-                    // Strip the query string from action
-                    Form.Action = ResolveUrl("~/Account/Manage");
-
-                    SuccessMessage =
-                        message == "ChangePwdSuccess" ? "Your password has been changed."
-                        : message == "SetPwdSuccess" ? "Your password has been set."
-                        : message == "RemoveLoginSuccess" ? "The account was removed."
-                        : message == "AddPhoneNumberSuccess" ? "Phone number has been added"
-                        : message == "RemovePhoneNumberSuccess" ? "Phone number was removed"
-                        : String.Empty;
-                    successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
-                }
-            }
-        }
-
-
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-        }
-
-        // Remove phonenumber from user
-        protected void RemovePhone_Click(object sender, EventArgs e)
-        {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-            var result = manager.SetPhoneNumber(User.Identity.GetUserId(), null);
-            if (!result.Succeeded)
-            {
-                return;
-            }
-            var user = manager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
-                Response.Redirect("/Account/Manage?m=RemovePhoneNumberSuccess");
-            }
-        }
-
-        // DisableTwoFactorAuthentication
-        protected void TwoFactorDisable_Click(object sender, EventArgs e)
-        {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.SetTwoFactorEnabled(User.Identity.GetUserId(), false);
-
-            Response.Redirect("/Account/Manage");
-        }
-
-        //EnableTwoFactorAuthentication 
-        protected void TwoFactorEnable_Click(object sender, EventArgs e)
-        {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.SetTwoFactorEnabled(User.Identity.GetUserId(), true);
-
-            Response.Redirect("/Account/Manage");
         }
     }
 }

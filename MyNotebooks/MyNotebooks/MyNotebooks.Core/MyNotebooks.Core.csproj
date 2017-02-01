@@ -93,16 +93,20 @@
   <ItemGroup>
     <Compile Include="AssemblyId\ICoreAssemblyId.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ManageModel.cs" />
     <Compile Include="Models\NotebookModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Presenters\Contracts\ILoginPresenter.cs" />
+    <Compile Include="Presenters\Contracts\IManagePresenter.cs" />
     <Compile Include="Presenters\Contracts\INotebookPresenter.cs" />
     <Compile Include="Presenters\Contracts\IRegistrationPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\ManagePresenter.cs" />
     <Compile Include="Presenters\NotebookPresenter.cs" />
     <Compile Include="Presenters\RegistrationPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ILoginView.cs" />
+    <Compile Include="Views\IManageView.cs" />
     <Compile Include="Views\INotebookView.cs" />
     <Compile Include="Views\IRegistrationView.cs" />
   </ItemGroup>
