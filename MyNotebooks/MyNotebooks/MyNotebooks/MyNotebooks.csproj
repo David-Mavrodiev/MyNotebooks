@@ -423,7 +423,6 @@
     </Compile>
     <Compile Include="App_Start\Factories\CustomPresenterFactory.cs" />
     <Compile Include="App_Start\Factories\ICustomPresenterFactory.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectBindingsModules\DataBindingsModule.cs" />
     <Compile Include="App_Start\NinjectBindingsModules\MVPBindingsModule.cs" />
     <Compile Include="App_Start\NinjectBindingsModules\ServicesBindingsModule.cs" />
@@ -449,7 +448,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Notebooks\Biology.aspx.cs">
       <DependentUpon>Biology.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

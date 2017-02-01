@@ -4,7 +4,8 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
-using MyNotebooks.Models;
+using MyNotebooks.Data.AccountServices;
+using MyNotebooks.Data.AccountServices.Helpers;
 
 namespace MyNotebooks.Account
 {

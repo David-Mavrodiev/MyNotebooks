@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
-using MyNotebooks.Models;
+using MyNotebooks.Data.AccountServices;
 
 namespace MyNotebooks.Account
 {

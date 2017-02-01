@@ -4,7 +4,8 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
-using MyNotebooks.Models;
+using MyNotebooks.DataModels.Models;
+using MyNotebooks.Data.AccountServices;
 
 namespace MyNotebooks.Account
 {
@@ -20,7 +21,7 @@ namespace MyNotebooks.Account
             {
                 // Validate the user's email address
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                ApplicationUser user = manager.FindByName(Email.Text);
+                User user = manager.FindByName(Email.Text);
                 if (user == null || !manager.IsEmailConfirmed(user.Id))
                 {
                     FailureText.Text = "The user either does not exist or is not confirmed.";

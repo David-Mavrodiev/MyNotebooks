@@ -1,4 +1,6 @@
-﻿using MyNotebooks.Data.Contracts;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using MyNotebooks.Data.Contracts;
+using MyNotebooks.DataModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,7 +19,7 @@ namespace MyNotebooks.Data.UnitOfWorks
             
         }
 
-        public void setContext(DbContext context)
+        public void setContext(IdentityDbContext<User> context)
         {
             this.context = context;
         }
