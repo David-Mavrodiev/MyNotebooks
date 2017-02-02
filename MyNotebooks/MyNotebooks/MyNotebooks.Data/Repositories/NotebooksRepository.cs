@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using MyNotebooks.Data.Contracts;
 using MyNotebooks.Data;
+using MyNotebooks.DataModels.Contracts;
 
 namespace MyNotebooks.Data.Repositories
 {
     public class NotebooksRepository : INotebooksRepository
     {
-        public NotebooksDbContext Context { get; set; }
+        public INotebookDbContext Context { get; set; }
 
         public NotebooksRepository()
         {
                
         }
 
-        public void setNotebookDbContext(NotebooksDbContext context)
+        public void setNotebookDbContext(INotebookDbContext context)
         {
             this.Context = context;
         }
