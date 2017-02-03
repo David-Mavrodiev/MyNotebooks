@@ -101,11 +101,13 @@
     <Compile Include="Contracts\IGenericRepository.cs" />
     <Compile Include="Contracts\INotebookDbContext.cs" />
     <Compile Include="Contracts\INotebooksRepository.cs" />
+    <Compile Include="Contracts\IRelationshipRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="NotebooksDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NotebooksRepository.cs" />
+    <Compile Include="Repositories\RelationshipRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="UnitOfWorks\EfUnitOfWork.cs" />
   </ItemGroup>

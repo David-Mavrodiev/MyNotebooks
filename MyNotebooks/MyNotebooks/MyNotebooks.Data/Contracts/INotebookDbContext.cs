@@ -1,4 +1,5 @@
 ﻿using MyNotebooks.Data.Models;
+using MyNotebooks.DataModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,6 +12,8 @@ namespace MyNotebooks.Data.Contracts
     public interface INotebookDbContext
     {
         IDbSet<Notebook> Notebooks { get; set; }
+
+        IDbSet<Relationship> Relationships { get; set; }
 
         int SaveChanges();
     }

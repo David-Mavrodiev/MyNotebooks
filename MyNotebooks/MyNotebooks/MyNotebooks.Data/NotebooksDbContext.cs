@@ -22,6 +22,8 @@ namespace MyNotebooks.Data
 
         public virtual IDbSet<Notebook> Notebooks { get; set; }
 
+        public virtual IDbSet<Relationship> Relationships { get; set; }
+
         public static NotebooksDbContext Create()
         {
             return new NotebooksDbContext();

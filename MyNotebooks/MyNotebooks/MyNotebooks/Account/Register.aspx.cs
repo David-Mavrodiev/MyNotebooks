@@ -97,9 +97,9 @@ namespace MyNotebooks.Account
             this.RegisterUser(sender, e);
         }
 
-        public void Redirect()
+        public void Redirect(string dir)
         {
-            this.Response.Redirect("~/");
+            this.Response.Redirect(dir);
         }
     }
 }

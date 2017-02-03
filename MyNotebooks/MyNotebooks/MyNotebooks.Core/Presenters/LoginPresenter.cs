@@ -13,12 +13,14 @@ namespace MyNotebooks.Core.Presenters
     public class LoginPresenter : Presenter<ILoginView>, ILoginPresenter
     {
         private ILoginView view;
+        private IUserService userService;
 
-        public LoginPresenter(ILoginView view) : base(view)
+        public LoginPresenter(ILoginView view, IUserService userService) : base(view)
         {
             this.view = view;
             this.view.LoginUser += Login;
             this.view.NavigateUrl = "Register";
+            this.userService = userService;
         }
 
         public void Login(object sender, EventArgs e)
@@ -27,19 +29,10 @@ namespace MyNotebooks.Core.Presenters
             {
                 IApplicationSignInManager signinManager = this.view.SignInManager;
                 bool isLogIn = signinManager.SignIn(this.view.Email, this.view.Password, this.view.Remember);
-                
+
                 if (isLogIn)
                 {
-                    if (this.view.IsInRole("administrator"))
-                    {
-                        isLogIn = true; 
-                    }
-                    else
-                    {
-                        isLogIn = true;
-                    }
-
-                    this.view.Success();
+                    this.view.Success("~/");
                 }
                 else
                 {

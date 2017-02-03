@@ -216,6 +216,7 @@
     <Content Include="Images\Music.jpg" />
     <Content Include="Images\Physics.jpg" />
     <Content Include="Images\Psychology.jpg" />
+    <Content Include="ManageNotebooks.aspx" />
     <Content Include="Notebooks\Biology.aspx" />
     <Content Include="Notebooks\Bulgarian.aspx" />
     <Content Include="Notebooks\Chemistry.aspx" />
@@ -286,6 +287,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Teachers.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -383,6 +385,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ManageNotebooks.aspx.cs">
+      <DependentUpon>ManageNotebooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageNotebooks.aspx.designer.cs">
+      <DependentUpon>ManageNotebooks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Notebooks\Biology.aspx.cs">
       <DependentUpon>Biology.aspx</DependentUpon>
@@ -659,6 +668,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Teachers.aspx.cs">
+      <DependentUpon>Teachers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teachers.aspx.designer.cs">
+      <DependentUpon>Teachers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

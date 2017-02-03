@@ -87,8 +87,10 @@
   <ItemGroup>
     <Compile Include="AssemblyId\IServiceAssemblyId.cs" />
     <Compile Include="Contracts\INotebookService.cs" />
+    <Compile Include="Contracts\IRelationshipService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NotebookService.cs" />
+    <Compile Include="Services\RelationshipService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyNotebooks.DataModels\MyNotebooks.DataModels.csproj">

@@ -35,7 +35,8 @@ namespace MyNotebooks.Core.Presenters
             {
                 this.userService.AddRoleToUser(user.UserName, this.view.GetRole);
                 signInManager.SignIn(user.UserName, this.View.Password, false);
-                this.view.Redirect();
+
+                this.view.Redirect("~/");
             }
             else
             {

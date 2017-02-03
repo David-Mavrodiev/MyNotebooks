@@ -25,6 +25,6 @@ namespace MyNotebooks.Core.Views
 
         event EventHandler<EventArgs> RegisterUser;
 
-        void Redirect();
+        void Redirect(string dir);
     }
 }

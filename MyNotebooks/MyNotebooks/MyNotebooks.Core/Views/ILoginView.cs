@@ -27,7 +27,7 @@ namespace MyNotebooks.Core.Views
 
         event EventHandler<EventArgs> LoginUser;
 
-        void Success();
+        void Success(string dir);
 
         bool ErrorTextVisible { get; set; }
 

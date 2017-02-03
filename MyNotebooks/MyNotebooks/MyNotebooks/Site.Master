@@ -51,6 +51,14 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Начало</a></li>
+                        <% if (Context.User.IsInRole("Teacher"))
+                            { %>
+                        <li><a runat="server" href="~/ManageNotebooks">Достъп до тетрадки</a></li>
+                        <%} %>
+                        <% if (Context.User.IsInRole("Student"))
+                            { %>
+                        <li><a runat="server" href="~/Teachers">Учители</a></li>
+                        <%} %>
                         <li><a runat="server" href="~/About">Помощ</a></li>
                         <li><a runat="server" href="~/Contact">Контакти</a></li>
                     </ul>

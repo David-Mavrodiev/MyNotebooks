@@ -122,9 +122,9 @@ namespace MyNotebooks.Account
             }
         }
 
-        public void Success()
+        public void Success(string dir)
         {
-            this.Response.Redirect("~/");
+            this.Response.Redirect(dir);
         }
 
         public bool IsInRole(string role)

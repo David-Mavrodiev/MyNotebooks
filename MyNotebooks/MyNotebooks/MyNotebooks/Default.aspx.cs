@@ -81,12 +81,12 @@ namespace MyNotebooks
                 this.notebooksLinks.Add(this.subjectTitles.ElementAt(i).Key, string.Format("{0}/{1}", notebooksDirectory, this.subjectTitles.ElementAt(i).Value));
             }
 
-            if (!this.IsLogged)
+            if (!this.IsLogged || (this.IsLogged && User.IsInRole("Teacher")))
             {
                 this.notebooks.Visible = false;
                 this.about.Visible = true;
             }
-            else
+            else if(this.IsLogged && User.IsInRole("Student"))
             {
                 this.notebooks.Visible = true;
                 this.about.Visible = false;
