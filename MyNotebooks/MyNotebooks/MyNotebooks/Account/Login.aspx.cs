@@ -126,5 +126,10 @@ namespace MyNotebooks.Account
         {
             this.Response.Redirect("~/");
         }
+
+        public bool IsInRole(string role)
+        {
+            return User.IsInRole(role);
+        }
     }
 }

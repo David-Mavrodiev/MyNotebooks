@@ -30,6 +30,15 @@ namespace MyNotebooks.Core.Presenters
                 
                 if (isLogIn)
                 {
+                    if (this.view.IsInRole("administrator"))
+                    {
+                        isLogIn = true; 
+                    }
+                    else
+                    {
+                        isLogIn = true;
+                    }
+
                     this.view.Success();
                 }
                 else

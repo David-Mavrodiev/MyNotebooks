@@ -30,5 +30,7 @@ namespace MyNotebooks.Core.Views
         void Success();
 
         bool ErrorTextVisible { get; set; }
+
+        bool IsInRole(string role);
     }
 }

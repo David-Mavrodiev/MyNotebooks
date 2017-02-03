@@ -14,6 +14,8 @@ using WebFormsMvp;
 using MyNotebooks.Core.Models;
 using MyNotebooks.Core.Views;
 using MyNotebooks.Data.AccountServices.Contracts;
+using System.Security.Claims;
+using MyNotebooks.Data;
 
 namespace MyNotebooks.Account
 {
@@ -72,6 +74,14 @@ namespace MyNotebooks.Account
             set
             {
                 this.Password.Text = value;
+            }
+        }
+
+        public string GetRole
+        {
+            get
+            {
+                return this.Roles.SelectedItem.Text;
             }
         }
 

@@ -94,15 +94,19 @@
     <Compile Include="AccountServices\ApplicationUserManager.cs" />
     <Compile Include="AccountServices\Contracts\IApplicationSignInManager.cs" />
     <Compile Include="AccountServices\Contracts\IApplicationUserManager.cs" />
+    <Compile Include="AccountServices\Contracts\IUserService.cs" />
     <Compile Include="AccountServices\Helpers\IdentityHelper.cs" />
+    <Compile Include="AccountServices\UserService.cs" />
     <Compile Include="AssemblyId\IDataAssemblyId.cs" />
     <Compile Include="Contracts\IGenericRepository.cs" />
     <Compile Include="Contracts\INotebookDbContext.cs" />
     <Compile Include="Contracts\INotebooksRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
+    <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="NotebooksDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NotebooksRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="UnitOfWorks\EfUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

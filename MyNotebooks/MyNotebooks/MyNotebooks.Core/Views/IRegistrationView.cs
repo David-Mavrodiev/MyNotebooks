@@ -21,6 +21,8 @@ namespace MyNotebooks.Core.Views
 
         string ErrorMessageText { get; set; }
 
+        string GetRole { get; }
+
         event EventHandler<EventArgs> RegisterUser;
 
         void Redirect();

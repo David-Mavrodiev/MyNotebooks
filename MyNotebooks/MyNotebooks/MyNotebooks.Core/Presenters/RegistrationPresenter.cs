@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyNotebooks.Core.Presenters.Contracts;
 using MyNotebooks.Core.Views;
+using MyNotebooks.Data.AccountServices.Contracts;
 using MyNotebooks.DataModels.Models;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace MyNotebooks.Core.Presenters
     public class RegistrationPresenter : Presenter<IRegistrationView>, IRegistrationPresenter
     {
         private IRegistrationView view;
+        private IUserService userService;
 
-        public RegistrationPresenter(IRegistrationView view) : base(view)
+        public RegistrationPresenter(IRegistrationView view, IUserService userService) : base(view)
         {
             this.view = view;
             this.view.RegisterUser += Register;
+            this.userService = userService;
         }
 
         public void Register(object sender, EventArgs e)
@@ -27,8 +30,10 @@ namespace MyNotebooks.Core.Presenters
             var signInManager = this.view.SignInManager;
             var user = new User() { UserName = this.view.Email, Email = this.view.Email };
             bool result = manager.CreateUser(user, this.view.Password);
+
             if (result)
             {
+                this.userService.AddRoleToUser(user.UserName, this.view.GetRole);
                 signInManager.SignIn(user.UserName, this.View.Password, false);
                 this.view.Redirect();
             }

@@ -37,6 +37,15 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" Text="Choose role" CssClass="col-md-2 control-label"></asp:Label>
+            <div class="col-md-10">
+                <asp:DropDownList ID="Roles" runat="server" CssClass="form-control">
+                    <asp:ListItem Text="Student"></asp:ListItem>
+                    <asp:ListItem Text="Teacher"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button ID="RegisterButton" runat="server" Text="Register" CssClass="btn btn-default" />
             </div>

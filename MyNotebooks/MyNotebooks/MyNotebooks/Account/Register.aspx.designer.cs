@@ -49,6 +49,15 @@ namespace MyNotebooks.Account {
         protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
         
         /// <summary>
+        /// Roles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Roles;
+        
+        /// <summary>
         /// RegisterButton control.
         /// </summary>
         /// <remarks>
