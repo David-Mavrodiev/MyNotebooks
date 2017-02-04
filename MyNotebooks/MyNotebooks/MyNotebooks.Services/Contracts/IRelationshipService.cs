@@ -16,6 +16,8 @@ namespace MyNotebooks.Services.Contracts
 
         List<Relationship> Find(string studentName);
 
+        List<Relationship> FindByTeacher(string teacherName);
+
         void Add(Relationship entity);
 
         void Delete(Relationship entity);

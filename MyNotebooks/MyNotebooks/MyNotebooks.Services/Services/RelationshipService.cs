@@ -52,5 +52,10 @@ namespace MyNotebooks.Services.Services
         {
             return this.repository.Find(studentName, subject, teacherName);
         }
+
+        public List<Relationship> FindByTeacher(string teacherName)
+        {
+            return this.repository.FindByTeacher(teacherName);
+        }
     }
 }

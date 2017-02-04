@@ -24,12 +24,20 @@ namespace MyNotebooks.Data.Repositories
 
         public void Add(Relationship entity)
         {
-            this.Context.Relationships.Add(entity);
+            var list = this.Context.Relationships.Where(r => r.StudentName == entity.StudentName && r.Subject == entity.Subject).ToList();
+            if (list.Count > 0)
+            {
+                list.ElementAt(0).TeacherName = entity.TeacherName;
+            }
+            else
+            {
+                this.Context.Relationships.Add(entity);
+            }
         }
 
         public void Delete(Relationship entity)
         {
-            this.Context.Relationships.Add(entity);
+            this.Context.Relationships.Remove(entity);
         }
 
         public Relationship Find(string studentName, string subject, string teacherName)
@@ -54,6 +62,13 @@ namespace MyNotebooks.Data.Repositories
         public List<Relationship> Find(string studentName)
         {
             var list = this.Context.Relationships.Where(r => r.StudentName == studentName).ToList();
+            var copyList = list.Select(r => new Relationship() { StudentName = r.StudentName, Subject = r.Subject, TeacherName = r.TeacherName }).ToList();
+            return copyList;
+        }
+
+        public List<Relationship> FindByTeacher(string teacherName)
+        {
+            var list = this.Context.Relationships.Where(r => r.TeacherName == teacherName).ToList();
             var copyList = list.Select(r => new Relationship() { StudentName = r.StudentName, Subject = r.Subject, TeacherName = r.TeacherName }).ToList();
             return copyList;
         }

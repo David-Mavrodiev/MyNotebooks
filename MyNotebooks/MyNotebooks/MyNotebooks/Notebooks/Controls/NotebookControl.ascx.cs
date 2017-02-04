@@ -32,13 +32,22 @@ namespace MyNotebooks.Notebooks.Controls
 
         public string Subject { get; set; }
 
+        public string Mode { get; set; }
+
         public string Type { get; set; }
 
         public string Username
         {
             get
             {
-                return Page.User.Identity.Name;
+                if (this.Mode == "Check")
+                {
+                    return Request.QueryString["studentName"];
+                }
+                else
+                {
+                    return Page.User.Identity.Name;
+                }
             }
         }
 
@@ -47,6 +56,15 @@ namespace MyNotebooks.Notebooks.Controls
         public string NotebookType { get; set; }
 
         public event EventHandler<EventArgs> SaveChanges;
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (this.Mode == "Check")
+            {
+                this.Subject = Request.QueryString["Subject"];
+                this.NotebookTitle = Request.QueryString["Bg"];
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

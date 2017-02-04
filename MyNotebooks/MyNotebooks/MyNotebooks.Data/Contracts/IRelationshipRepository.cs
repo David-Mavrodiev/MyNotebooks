@@ -16,5 +16,7 @@ namespace MyNotebooks.Data.Contracts
         List<Relationship> Find(string studentName, string subject);
 
         List<Relationship> Find(string studentName);
+
+        List<Relationship> FindByTeacher(string teacherName);
     }
 }
