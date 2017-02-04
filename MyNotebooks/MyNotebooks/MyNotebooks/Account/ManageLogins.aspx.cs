@@ -7,34 +7,58 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using MyNotebooks.Data.AccountServices;
+using WebFormsMvp.Web;
+using MyNotebooks.Core.Models;
+using MyNotebooks.Core.Views;
+using WebFormsMvp;
+using MyNotebooks.Core.Presenters.Contracts;
 
 namespace MyNotebooks.Account
 {
-    public partial class ManageLogins : System.Web.UI.Page
+    [PresenterBinding(typeof(IManageLoginsPresenter))]
+    public partial class ManageLogins : MvpPage<ManageLoginsModel>, IManageLoginsView
     {
-        protected string SuccessMessage
+        public string SuccessMessage
         {
             get;
-            private set;
-        }
-        protected bool CanRemoveExternalLogins
-        {
-            get;
-            private set;
+            set;
         }
 
-        private bool HasPassword(ApplicationUserManager manager)
+        public bool CanRemoveExternalLogins
+        {
+            get;
+            set;
+        }
+
+        public int GetLoginsCount
+        {
+            get
+            {
+                return Context.GetOwinContext().GetUserManager<ApplicationUserManager>().GetLogins(User.Identity.GetUserId()).Count();
+            }
+        }
+
+        public bool SuccessMessageVisible
+        {
+            get
+            {
+                return this.successMessage.Visible;
+            }
+
+            set
+            {
+                this.successMessage.Visible = value;
+            }
+        }
+
+        public bool HasPassword(ApplicationUserManager manager)
         {
             return manager.HasPassword(User.Identity.GetUserId());
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            CanRemoveExternalLogins = manager.GetLogins(User.Identity.GetUserId()).Count() > 1;
-
-            SuccessMessage = String.Empty;
-            successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
+           
         }
 
         public IEnumerable<UserLoginInfo> GetLogins()

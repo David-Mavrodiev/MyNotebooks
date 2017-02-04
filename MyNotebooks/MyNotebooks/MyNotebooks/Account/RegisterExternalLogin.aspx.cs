@@ -7,10 +7,16 @@ using Owin;
 using MyNotebooks.DataModels.Models;
 using MyNotebooks.Data.AccountServices;
 using MyNotebooks.Data.AccountServices.Helpers;
+using WebFormsMvp;
+using MyNotebooks.Core.Presenters.Contracts;
+using WebFormsMvp.Web;
+using MyNotebooks.Core.Models;
+using MyNotebooks.Core.Views;
 
 namespace MyNotebooks.Account
 {
-    public partial class RegisterExternalLogin : System.Web.UI.Page
+    [PresenterBinding(typeof(IRegisterExternalLoginPresenter))]
+    public partial class RegisterExternalLogin : MvpPage<RegisterExternalLoginModel>, IRegisterExternalLoginView
     {
         protected string ProviderName
         {

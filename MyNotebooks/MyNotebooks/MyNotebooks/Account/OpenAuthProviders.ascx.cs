@@ -6,10 +6,16 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyNotebooks.Data.AccountServices.Helpers;
+using WebFormsMvp.Web;
+using MyNotebooks.Core.Models;
+using MyNotebooks.Core.Views;
+using WebFormsMvp;
+using MyNotebooks.Core.Presenters.Contracts;
 
 namespace MyNotebooks.Account
 {
-    public partial class OpenAuthProviders : System.Web.UI.UserControl
+    [PresenterBinding(typeof(IOpenAuthProvidersPresenter))]
+    public partial class OpenAuthProviders : MvpUserControl<OpenAuthProvidersModel>, IOpenAuthProvidersView
     {
         protected void Page_Load(object sender, EventArgs e)
         {

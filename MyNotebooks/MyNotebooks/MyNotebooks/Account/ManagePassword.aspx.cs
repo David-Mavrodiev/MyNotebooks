@@ -7,10 +7,16 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using MyNotebooks.Data.AccountServices;
+using WebFormsMvp.Web;
+using MyNotebooks.Core.Views;
+using MyNotebooks.Core.Models;
+using WebFormsMvp;
+using MyNotebooks.Core.Presenters.Contracts;
 
 namespace MyNotebooks.Account
 {
-    public partial class ManagePassword : System.Web.UI.Page
+    [PresenterBinding(typeof(IManagePasswordPresenter))]
+    public partial class ManagePassword : MvpPage<ManagePasswordModel>, IManagePasswordView
     {
         protected string SuccessMessage
         {
