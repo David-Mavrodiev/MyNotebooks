@@ -9,7 +9,7 @@ namespace MyNotebooks.Data.Contracts
 {
     public interface IRelationshipRepository : IGenericRepository<Relationship>
     {
-        void setContext(NotebooksDbContext context);
+        void setContext(INotebookDbContext context);
 
         Relationship Find(string studentName, string subject, string teacherName);
 

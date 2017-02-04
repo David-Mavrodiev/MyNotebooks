@@ -32,6 +32,20 @@ namespace MyNotebooks.Tests.Services.Tests
             Assert.IsInstanceOf<NotebookService>(service);
         }
 
+        [Test]
+        public void NotebookService_Repo_Should_Call_SetContext()
+        {
+            var mockedRepository = new Mock<INotebooksRepository>();
+            mockedRepository.Setup(r => r.setNotebookDbContext(It.IsAny<INotebookDbContext>()));
+
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedDbContext = new MockedDbContext();
+
+            var service = new NotebookService(mockedRepository.Object, mockedUnitOfWork.Object, mockedDbContext);
+
+            mockedRepository.Verify(r => r.setNotebookDbContext(It.IsAny<INotebookDbContext>()), Times.Once);
+        }
+
         [TestCase("Informatics")]
         [TestCase("Math")]
         [TestCase("IT")]

@@ -17,7 +17,7 @@ namespace MyNotebooks.Data.Repositories
 
         }
 
-        public void setContext(NotebooksDbContext context)
+        public void setContext(INotebookDbContext context)
         {
             this.Context = context;
         }
