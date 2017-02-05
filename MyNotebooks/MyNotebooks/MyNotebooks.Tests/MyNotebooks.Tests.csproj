@@ -52,8 +52,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebFormsMvp, Version=1.4.5.0, Culture=neutral, PublicKeyToken=537f18701145dff0, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebFormsMvp.1.4.5.0\lib\WebFormsMvp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core.Presenters.Tests\DefaultPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\LoginPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\ManageLoginsPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\ManageNotebooksPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\ManagePresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\NotebookPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\RegistrationPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\TeacherPresenterTests.cs" />
     <Compile Include="Data.Tests\EfUnitOfWorkTests.cs" />
     <Compile Include="Data.Tests\NotebooksRepositoryTests.cs" />
     <Compile Include="Data.Tests\RelationshipsRepositoryTests.cs" />
@@ -70,6 +82,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyNotebooks.Core\MyNotebooks.Core.csproj">
+      <Project>{617FC8A1-78A9-422B-944F-216A54A67DBD}</Project>
+      <Name>MyNotebooks.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyNotebooks.DataModels\MyNotebooks.DataModels.csproj">
       <Project>{0F187EF2-4307-43A7-814D-08389DF9B9A3}</Project>
       <Name>MyNotebooks.DataModels</Name>

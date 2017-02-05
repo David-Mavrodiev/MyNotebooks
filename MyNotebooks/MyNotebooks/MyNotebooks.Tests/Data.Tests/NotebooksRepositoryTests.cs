@@ -14,6 +14,14 @@ namespace MyNotebooks.Tests.Data.Tests
     public class NotebooksRepositoryTests
     {
         [Test]
+        public void NotebooksRepository_Should_Initialize_A_Object()
+        {
+            var repo = new NotebooksRepository();
+
+            Assert.IsInstanceOf<NotebooksRepository>(repo);
+        }
+
+        [Test]
         public void NotebooksRepository_Should_Not_Throw_When_SetContext()
         {
             var DbContextMock = new Mock<INotebookDbContext>();

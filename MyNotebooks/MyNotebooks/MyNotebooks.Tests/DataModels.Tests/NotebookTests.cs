@@ -11,6 +11,14 @@ namespace MyNotebooks.Tests.DataModels.Tests
     [TestFixture]
     public class NotebookTests
     {
+        [Test]
+        public void Notebook_Should_Initialize_A_Object()
+        {
+            var notebook = new Notebook();
+
+            Assert.IsInstanceOf<Notebook>(notebook);
+        }
+
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(100)]

@@ -14,6 +14,14 @@ namespace MyNotebooks.Tests.Data.Tests
     public class RelationshipsRepositoryTests
     {
         [Test]
+        public void RelationshipRepository_Should_Initialize_A_Object()
+        {
+            var repo = new RelationshipRepository();
+
+            Assert.IsInstanceOf<RelationshipRepository>(repo);
+        }
+
+        [Test]
         public void RelationshipRepository_Should_Set_DbContext()
         {
             var DbContextMock = new Mock<INotebookDbContext>();

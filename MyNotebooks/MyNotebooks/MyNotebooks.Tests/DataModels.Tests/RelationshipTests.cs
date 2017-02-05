@@ -11,6 +11,14 @@ namespace MyNotebooks.Tests.DataModels.Tests
     [TestFixture]
     public class RelationshipTests
     {
+        [Test]
+        public void Relationship_Should_Initialize_A_Object()
+        {
+            var relationship = new Relationship();
+
+            Assert.IsInstanceOf<Relationship>(relationship);
+        }
+
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
