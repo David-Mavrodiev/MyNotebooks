@@ -1,0 +1,2 @@
+..\\..\\..\\packages\\OpenCover.4.6.519\\tools\\OpenCover.Console.exe -target:runtests.bat -filter:"+[*]* -[WebFormsMvp*]* -[MyNotebooks.Test*]* -[MyNotebooks.Identity*]*" -register:user
+..\\..\\..\\packages\\ReportGenerator.2.5.2\\tools\\ReportGenerator.exe -reports:results.xml -targetdir:coverage
