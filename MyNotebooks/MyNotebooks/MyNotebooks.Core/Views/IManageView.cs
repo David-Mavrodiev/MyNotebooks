@@ -1,6 +1,6 @@
 ﻿using Microsoft.Owin.Security;
 using MyNotebooks.Core.Models;
-using MyNotebooks.Data.AccountServices.Contracts;
+using MyNotebooks.Identity.AccountServices.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

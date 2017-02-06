@@ -708,6 +708,10 @@
       <Project>{D01C9493-6B35-43A8-A7F1-DC0020B582A5}</Project>
       <Name>MyNotebooks.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyNotebooks.Identity\MyNotebooks.Identity.csproj">
+      <Project>{46D340F4-6725-4778-B9A2-0960B8E86887}</Project>
+      <Name>MyNotebooks.Identity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyNotebooks.Services\MyNotebooks.Services.csproj">
       <Project>{B2C8261B-6B7F-48E4-907E-CBEEBEDAF01C}</Project>
       <Name>MyNotebooks.Services</Name>

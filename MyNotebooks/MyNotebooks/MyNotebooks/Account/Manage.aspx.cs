@@ -8,13 +8,13 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
-using MyNotebooks.Data.AccountServices;
 using MyNotebooks.Core.Models;
 using WebFormsMvp.Web;
 using MyNotebooks.Core.Views;
-using MyNotebooks.Data.AccountServices.Contracts;
 using MyNotebooks.Core.Presenters.Contracts;
 using WebFormsMvp;
+using MyNotebooks.Identity.AccountServices.Contracts;
+using MyNotebooks.Identity.AccountServices;
 
 namespace MyNotebooks.Account
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyNotebooks.Core.Models;
-using MyNotebooks.Data.AccountServices;
+using MyNotebooks.Identity.AccountServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;

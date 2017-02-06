@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotebooks.DataModels", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotebooks.Tests", "MyNotebooks.Tests\MyNotebooks.Tests.csproj", "{F1DA9BE3-4FD3-4CE2-B64B-3257C5B09487}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNotebooks.Identity", "MyNotebooks.Identity\MyNotebooks.Identity.csproj", "{46D340F4-6725-4778-B9A2-0960B8E86887}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F1DA9BE3-4FD3-4CE2-B64B-3257C5B09487}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1DA9BE3-4FD3-4CE2-B64B-3257C5B09487}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1DA9BE3-4FD3-4CE2-B64B-3257C5B09487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D340F4-6725-4778-B9A2-0960B8E86887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D340F4-6725-4778-B9A2-0960B8E86887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D340F4-6725-4778-B9A2-0960B8E86887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D340F4-6725-4778-B9A2-0960B8E86887}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

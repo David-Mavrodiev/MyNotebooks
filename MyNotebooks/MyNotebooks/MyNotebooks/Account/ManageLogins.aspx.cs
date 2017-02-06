@@ -6,12 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using MyNotebooks.Data.AccountServices;
 using WebFormsMvp.Web;
 using MyNotebooks.Core.Models;
 using MyNotebooks.Core.Views;
 using WebFormsMvp;
 using MyNotebooks.Core.Presenters.Contracts;
+using MyNotebooks.Identity.AccountServices;
 
 namespace MyNotebooks.Account
 {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace MyNotebooks.Data.AccountServices.Helpers
+namespace MyNotebooks.Identity.AccountServices.Helpers
 {
     public static class IdentityHelper
     {

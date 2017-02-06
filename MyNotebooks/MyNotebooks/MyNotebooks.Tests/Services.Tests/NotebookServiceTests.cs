@@ -2,10 +2,12 @@
 using MyNotebooks.Data;
 using MyNotebooks.Data.Contracts;
 using MyNotebooks.Data.Models;
+using MyNotebooks.DataModels.Models;
 using MyNotebooks.Services.Services;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,7 @@ namespace MyNotebooks.Tests.Services.Tests
 {
     class MockedDbContext : NotebooksDbContext
     {
-
+        
     }
 
     [TestFixture]

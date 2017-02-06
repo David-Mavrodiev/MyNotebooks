@@ -1,7 +1,7 @@
 ﻿using Moq;
 using MyNotebooks.Core.Presenters;
 using MyNotebooks.Core.Views;
-using MyNotebooks.Data.AccountServices.Contracts;
+using MyNotebooks.Identity.AccountServices.Contracts;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

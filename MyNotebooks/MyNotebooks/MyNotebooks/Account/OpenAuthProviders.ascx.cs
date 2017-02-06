@@ -5,12 +5,12 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using MyNotebooks.Data.AccountServices.Helpers;
 using WebFormsMvp.Web;
 using MyNotebooks.Core.Models;
 using MyNotebooks.Core.Views;
 using WebFormsMvp;
 using MyNotebooks.Core.Presenters.Contracts;
+using MyNotebooks.Identity.AccountServices.Helpers;
 
 namespace MyNotebooks.Account
 {

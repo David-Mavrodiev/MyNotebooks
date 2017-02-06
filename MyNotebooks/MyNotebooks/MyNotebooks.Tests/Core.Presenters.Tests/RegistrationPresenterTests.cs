@@ -1,8 +1,8 @@
 ﻿using Moq;
 using MyNotebooks.Core.Presenters;
 using MyNotebooks.Core.Views;
-using MyNotebooks.Data.AccountServices.Contracts;
 using MyNotebooks.DataModels.Contracts;
+using MyNotebooks.Identity.AccountServices.Contracts;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -53,6 +53,37 @@ namespace MyNotebooks.Tests.Core.Presenters.Tests
             mockedView.Raise(v => v.RegisterUser += null, new EventArgs());
 
             mockedService.Verify(s => s.AddRoleToUser(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
+        }
+
+        [Test]
+        public void RegistrationPresenter_Should_Call_SaveFile_When_Successfuly_Register_A_User()
+        {
+            var signInManager = new Mock<IApplicationSignInManager>();
+            signInManager.SetupAllProperties();
+            signInManager.Setup(s => s.SignIn(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>())).Returns(true);
+
+            var mockedUserManager = new Mock<IApplicationUserManager>();
+            mockedUserManager.SetupAllProperties();
+            mockedUserManager.Setup(u => u.CreateUser(It.IsAny<IUser>(), It.IsAny<string>())).Returns(true);
+
+            var mockedView = new Mock<IRegistrationView>();
+            mockedView.SetupAllProperties();
+            mockedView.SetupGet(v => v.Email).Returns("test");
+            mockedView.SetupGet(v => v.Password).Returns("test");
+            mockedView.SetupGet(v => v.UserManager).Returns(mockedUserManager.Object);
+            mockedView.SetupGet(v => v.SignInManager).Returns(signInManager.Object);
+            mockedView.Setup(v => v.Redirect(It.IsAny<string>()));
+            mockedView.Setup(v => v.SaveFile(It.IsAny<string>()));
+            mockedView.SetupGet(v => v.HasFile).Returns(true);
+
+            var mockedService = new Mock<IUserService>();
+            mockedService.Setup(s => s.AddRoleToUser(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            var presenter = new RegistrationPresenter(mockedView.Object, mockedService.Object);
+
+            mockedView.Raise(v => v.RegisterUser += null, new EventArgs());
+
+            mockedView.Verify(v => v.SaveFile(It.IsAny<string>()), Times.Once);
         }
 
         [Test]

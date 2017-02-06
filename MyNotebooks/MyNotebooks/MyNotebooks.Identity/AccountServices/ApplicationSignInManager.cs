@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using MyNotebooks.Data.AccountServices.Contracts;
+using MyNotebooks.Identity.AccountServices.Contracts;
 using MyNotebooks.DataModels.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyNotebooks.Data.AccountServices
+namespace MyNotebooks.Identity.AccountServices
 {
     public class ApplicationSignInManager : SignInManager<User, string>, IApplicationSignInManager
     {

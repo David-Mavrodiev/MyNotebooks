@@ -8,8 +8,8 @@ using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MyNotebooks.Data;
-using MyNotebooks.Data.AccountServices;
 using MyNotebooks.DataModels.Models;
+using MyNotebooks.Identity.AccountServices;
 
 namespace MyNotebooks
 {

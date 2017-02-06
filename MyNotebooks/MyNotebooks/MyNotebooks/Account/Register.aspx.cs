@@ -6,16 +6,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using MyNotebooks.DataModels.Models;
-using MyNotebooks.Data.AccountServices;
-using MyNotebooks.Data.AccountServices.Helpers;
 using WebFormsMvp.Web;
 using MyNotebooks.Core.Presenters.Contracts;
 using WebFormsMvp;
 using MyNotebooks.Core.Models;
 using MyNotebooks.Core.Views;
-using MyNotebooks.Data.AccountServices.Contracts;
 using System.Security.Claims;
 using MyNotebooks.Data;
+using MyNotebooks.Identity.AccountServices;
+using MyNotebooks.Identity.AccountServices.Contracts;
 
 namespace MyNotebooks.Account
 {

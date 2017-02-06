@@ -5,13 +5,13 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using MyNotebooks.DataModels.Models;
-using MyNotebooks.Data.AccountServices;
-using MyNotebooks.Data.AccountServices.Helpers;
 using WebFormsMvp;
 using MyNotebooks.Core.Presenters.Contracts;
 using WebFormsMvp.Web;
 using MyNotebooks.Core.Models;
 using MyNotebooks.Core.Views;
+using MyNotebooks.Identity.AccountServices.Helpers;
+using MyNotebooks.Identity.AccountServices;
 
 namespace MyNotebooks.Account
 {

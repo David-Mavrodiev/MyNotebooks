@@ -1,4 +1,4 @@
-﻿using MyNotebooks.Data.AccountServices.Contracts;
+﻿using MyNotebooks.Identity.AccountServices.Contracts;
 using MyNotebooks.Data.Contracts;
 using System;
 using System.Collections.Generic;
@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyNotebooks.DataModels.Models;
+using MyNotebooks.Data;
 
-namespace MyNotebooks.Data.AccountServices
+namespace MyNotebooks.Identity.AccountServices
 {
     public class UserService : IUserService
     {

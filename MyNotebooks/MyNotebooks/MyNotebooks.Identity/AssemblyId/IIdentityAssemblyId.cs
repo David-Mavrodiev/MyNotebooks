@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyNotebooks.Core.Presenters.Contracts
+namespace MyNotebooks.Identity.AssemblyId
 {
-    public interface IManagePresenter
+    public interface IIdentityAssemblyId
     {
-        void Load(object sender, EventArgs e);
+
     }
 }

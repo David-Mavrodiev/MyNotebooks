@@ -12,6 +12,7 @@ using MyNotebooks.Data.Models;
 using MyNotebooks.Data.Repositories;
 using MyNotebooks.Data;
 using MyNotebooks.Data.UnitOfWorks;
+using MyNotebooks.Identity.AssemblyId;
 
 namespace MyNotebooks.App_Start.NinjectBindingsModules
 {
@@ -19,6 +20,11 @@ namespace MyNotebooks.App_Start.NinjectBindingsModules
     {
         public override void Load()
         {
+            this.Kernel.Bind(x =>
+                x.FromAssemblyContaining<IIdentityAssemblyId>()
+                .SelectAllClasses()
+                .BindDefaultInterface()
+            );
             this.Kernel.Bind(x =>
                 x.FromAssemblyContaining<IDataAssemblyId>()
                 .SelectAllClasses()

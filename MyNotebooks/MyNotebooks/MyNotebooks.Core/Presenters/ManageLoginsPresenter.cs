@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using WebFormsMvp;
 using Microsoft.AspNet.Identity;
-using MyNotebooks.Data.AccountServices;
 
 namespace MyNotebooks.Core.Presenters
 {

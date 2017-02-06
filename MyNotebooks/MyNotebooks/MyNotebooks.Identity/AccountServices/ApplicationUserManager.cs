@@ -2,7 +2,9 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using MyNotebooks.Data.AccountServices.Contracts;
+using MyNotebooks.Identity.AccountServices.Contracts;
+using MyNotebooks.Data;
+using MyNotebooks.Data.Contracts;
 using MyNotebooks.DataModels.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyNotebooks.Data.AccountServices
+namespace MyNotebooks.Identity.AccountServices
 {
     public class ApplicationUserManager : UserManager<User>, IApplicationUserManager
     {

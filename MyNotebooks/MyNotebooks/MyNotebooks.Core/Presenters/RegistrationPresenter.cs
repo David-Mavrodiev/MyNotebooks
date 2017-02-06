@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyNotebooks.Core.Presenters.Contracts;
 using MyNotebooks.Core.Views;
-using MyNotebooks.Data.AccountServices.Contracts;
 using MyNotebooks.DataModels.Models;
+using MyNotebooks.Identity.AccountServices.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

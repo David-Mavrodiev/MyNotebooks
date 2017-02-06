@@ -4,14 +4,13 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
-using MyNotebooks.Data.AccountServices;
-using MyNotebooks.Data.AccountServices.Helpers;
 using MyNotebooks.Core.Views;
 using MyNotebooks.Core.Models;
 using WebFormsMvp.Web;
 using MyNotebooks.Core.Presenters.Contracts;
 using WebFormsMvp;
-using MyNotebooks.Data.AccountServices.Contracts;
+using MyNotebooks.Identity.AccountServices.Contracts;
+using MyNotebooks.Identity.AccountServices;
 
 namespace MyNotebooks.Account
 {
