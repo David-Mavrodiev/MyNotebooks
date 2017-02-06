@@ -36,6 +36,11 @@ namespace MyNotebooks.Core.Presenters
                 this.userService.AddRoleToUser(user.UserName, this.view.GetRole);
                 signInManager.SignIn(user.UserName, this.View.Password, false);
 
+                if (this.view.HasFile)
+                {
+                    this.view.SaveFile(user.UserName + ".png");
+                }
+
                 this.view.Redirect("~/");
             }
             else

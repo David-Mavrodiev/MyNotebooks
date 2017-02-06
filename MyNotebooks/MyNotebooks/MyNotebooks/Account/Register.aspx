@@ -37,6 +37,12 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" Text="Upload Avatar" CssClass="col-md-2 control-label"></asp:Label>
+            <div class="col-md-10">
+                <asp:FileUpload ID="FileUploadControl" runat="server" />     
+            </div>
+        </div>
+        <div class="form-group">
             <asp:Label runat="server" Text="Choose role" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList ID="Roles" runat="server" CssClass="form-control">

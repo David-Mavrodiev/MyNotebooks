@@ -26,5 +26,9 @@ namespace MyNotebooks.Core.Views
         event EventHandler<EventArgs> RegisterUser;
 
         void Redirect(string dir);
+
+        bool HasFile { get; }
+
+        void SaveFile(string filename);
     }
 }

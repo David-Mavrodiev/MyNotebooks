@@ -85,6 +85,14 @@ namespace MyNotebooks.Account
             }
         }
 
+        public bool HasFile
+        {
+            get
+            {
+                return FileUploadControl.HasFile;
+            }
+        }
+
         public event EventHandler<EventArgs> RegisterUser;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -100,6 +108,11 @@ namespace MyNotebooks.Account
         public void Redirect(string dir)
         {
             this.Response.Redirect(dir);
+        }
+
+        public void SaveFile(string filename)
+        {
+            FileUploadControl.SaveAs(Server.MapPath("~/Uploaded_Files/") + filename);
         }
     }
 }

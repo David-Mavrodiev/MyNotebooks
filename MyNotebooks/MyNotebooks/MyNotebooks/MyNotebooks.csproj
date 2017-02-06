@@ -693,6 +693,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploaded_Files\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyNotebooks.Core\MyNotebooks.Core.csproj">
