@@ -34,6 +34,9 @@ namespace MyNotebooks
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/Filter.js").Include(
+                            "~/Scripts/Filter.js"));
+
             ScriptManager.ScriptResourceMapping.AddDefinition(
                 "respond",
                 new ScriptResourceDefinition

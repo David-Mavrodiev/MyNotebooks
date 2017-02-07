@@ -7,6 +7,7 @@
                 <div class="col-lg-12 text-center">
                     <h2>Тетрадки</h2>
                     <hr class="star-light">
+                    <input type="text" id="myInput" onkeyup="filter()" placeholder="Филтриране по име..">
                 </div>
             </div>
         </div>
@@ -19,9 +20,8 @@
             <%} %>
             <% for (int i = 0; i < this.GetNotebooks.Count; i++)
                 { %>
-            <div class="col-md-4">
                 <a href="/CheckNotebook?studentName=<%= this.GetNotebooks.ElementAt(i).StudentName%>&Subject=<%=this.Titles.FirstOrDefault(n => n.Key == this.GetNotebooks.ElementAt(i).Subject).Value  %>&Bg=<%= this.GetNotebooks.ElementAt(i).Subject %>">
-                    <div class="thumbnail">
+                    <div class="thumbnail" title="<%=this.GetNotebooks.ElementAt(i).StudentName %>">
                         <img style="width: 200px; height: 200px;" class="img-circle img-responsive" src="<%=Request.ApplicationPath + "Uploaded_Files/" + this.GetNotebooks.ElementAt(i).StudentName + ".png"  %>"/>
                         <div class="caption">
                             <p class="text-center"><%=this.GetNotebooks.ElementAt(i).Subject %></p>
@@ -29,8 +29,8 @@
                         </div>
                     </div>
                 </a>
-            </div>
             <%} %>
         </div>
     </div>
+    <%= System.Web.Optimization.Scripts.Render("~/Scripts/Filter.js") %>
 </asp:Content>
