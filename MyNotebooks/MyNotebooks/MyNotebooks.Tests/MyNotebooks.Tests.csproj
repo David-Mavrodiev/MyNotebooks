@@ -58,16 +58,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core.Models.Tests\NotebookModelTests.cs" />
     <Compile Include="Core.Presenters.Tests\DefaultPresenterTests.cs" />
     <Compile Include="Core.Presenters.Tests\LoginPresenterTests.cs" />
     <Compile Include="Core.Presenters.Tests\ManageLoginsPresenterTests.cs" />
     <Compile Include="Core.Presenters.Tests\ManageNotebooksPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\ManagePasswordPresenterTests.cs" />
     <Compile Include="Core.Presenters.Tests\ManagePresenterTests.cs" />
     <Compile Include="Core.Presenters.Tests\NotebookPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\OpenAuthProvidersPresenterTests.cs" />
+    <Compile Include="Core.Presenters.Tests\RegisterExternalLoginPresenterTests.cs" />
     <Compile Include="Core.Presenters.Tests\RegistrationPresenterTests.cs" />
     <Compile Include="Core.Presenters.Tests\TeacherPresenterTests.cs" />
     <Compile Include="Data.Tests\AccountServices\UserServiceTests.cs" />
     <Compile Include="Data.Tests\EfUnitOfWorkTests.cs" />
+    <Compile Include="Data.Tests\NotebooksDbContextTests.cs" />
     <Compile Include="Data.Tests\NotebooksRepositoryTests.cs" />
     <Compile Include="Data.Tests\RelationshipsRepositoryTests.cs" />
     <Compile Include="Data.Tests\UserRepositoryTests.cs" />

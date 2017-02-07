@@ -1,10 +1,13 @@
 ﻿using Moq;
 using MyNotebooks.Data.Contracts;
 using MyNotebooks.Data.Repositories;
+using MyNotebooks.DataModels.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +42,20 @@ namespace MyNotebooks.Tests.Data.Tests
             repo.setContext(DbContextMock.Object);
 
             Assert.Throws<ArgumentNullException>(() => repo.Find("test", "test2", "test3"));
+        }
+
+        [Test]
+        public void RelationshipRepository_Should_Call_Remove()
+        {
+            var DbContextMock = new Mock<INotebookDbContext>();
+            DbContextMock.Setup(c => c.Relationships.Remove(It.IsAny<Relationship>()));
+
+            var repo = new RelationshipRepository();
+            repo.setContext(DbContextMock.Object);
+
+            repo.Delete(new Relationship());
+
+            DbContextMock.Verify(c => c.Relationships.Remove(It.IsAny<Relationship>()), Times.Once);
         }
     }
 }

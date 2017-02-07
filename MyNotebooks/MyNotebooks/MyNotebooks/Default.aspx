@@ -43,16 +43,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h1>About</h1>
+                        <h1>Обща информация</h1>
                         <hr class="star-light">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-2">
-                        <h3>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</h3>
+                        <h3>Настоящото приложение цели да е в помощ на българските ученици, тъй като включва необходимите им учебни тетрадки за всеки изучаван предмет, които те могат в реално време свободно да ползват за работа в клас, а и за домашна работа също.</h3>
                     </div>
                     <div class="col-lg-4">
-                        <h3>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</h3>
+                        <h3>Освен това "е-тетрадки" се явява и в помощ на българските учители, които са улеснени при проверката на домашните работи, защото приложението им предоставя възможността за бърз контрол, рецензиране и оценяване на всяка една разработка.</h3>
                     </div>
                 </div>
             </div>

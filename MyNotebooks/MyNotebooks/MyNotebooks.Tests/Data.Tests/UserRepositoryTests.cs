@@ -1,4 +1,7 @@
-﻿using MyNotebooks.Data.Repositories;
+﻿using Moq;
+using MyNotebooks.Data;
+using MyNotebooks.Data.Repositories;
+using MyNotebooks.DataModels.Models;
 using MyNotebooks.Tests.Services.Tests;
 using NUnit.Framework;
 using System;
@@ -28,6 +31,32 @@ namespace MyNotebooks.Tests.Data.Tests
             repo.setContext(context);
 
             Assert.AreSame(context, repo.Context);
+        }
+
+        [Test]
+        public void UserRepository_Should_Add()
+        {
+            var context = new Mock<NotebooksDbContext>();
+            context.Setup(c =>c.Users.Add(It.IsAny<User>()));
+
+            var repo = new UserRepository();
+            repo.setContext(context.Object);
+            repo.Add(new User());
+
+            context.Verify(c => c.Users.Add(It.IsAny<User>()), Times.Once);
+        }
+
+        [Test]
+        public void UserRepository_Should_Delate()
+        {
+            var context = new Mock<NotebooksDbContext>();
+            context.Setup(c => c.Users.Remove(It.IsAny<User>()));
+
+            var repo = new UserRepository();
+            repo.setContext(context.Object);
+            repo.Delete(new User());
+            
+            context.Verify(c => c.Users.Remove(It.IsAny<User>()), Times.Once);
         }
     }
 }

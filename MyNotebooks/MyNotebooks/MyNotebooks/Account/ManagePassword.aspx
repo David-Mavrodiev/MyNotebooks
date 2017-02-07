@@ -1,20 +1,19 @@
 ﻿<%@ Page Title="Manage Password" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ManagePassword.aspx.cs" Inherits="MyNotebooks.Account.ManagePassword" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
+    <h2>Парола</h2>
     <div class="form-horizontal">
         <section id="passwordForm">
             <asp:PlaceHolder runat="server" ID="setPassword" Visible="false">
                 <p>
-                    You do not have a local password for this site. Add a local
-                        password so you can log in without an external login.
+                    Вие нямате парола за този сайт. Сиздайте си парола за вход в този сайт.
                 </p>
                 <div class="form-horizontal">
                     <h4>Set Password Form</h4>
                     <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                     <hr />
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="password" CssClass="col-md-2 control-label">Password</asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="password" CssClass="col-md-2 control-label">Парола</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="password" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="password"
@@ -26,7 +25,7 @@
                     </div>
 
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-2 control-label">Потвърждение на парола</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="confirmPassword"
@@ -40,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <asp:Button runat="server" Text="Set Password" ValidationGroup="SetPassword" OnClick="SetPassword_Click" CssClass="btn btn-default" />
+                            <asp:Button runat="server" Text="Създаване на парола" ValidationGroup="SetPassword" OnClick="SetPassword_Click" CssClass="btn btn-default" />
                         </div>
                     </div>
                 </div>
@@ -48,11 +47,11 @@
 
             <asp:PlaceHolder runat="server" ID="changePasswordHolder" Visible="false">
                 <div class="form-horizontal">
-                    <h4>Change Password Form</h4>
+                    <h4>Смяна на паролата</h4>
                     <hr />
                     <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                     <div class="form-group">
-                        <asp:Label runat="server" ID="CurrentPasswordLabel" AssociatedControlID="CurrentPassword" CssClass="col-md-2 control-label">Current password</asp:Label>
+                        <asp:Label runat="server" ID="CurrentPasswordLabel" AssociatedControlID="CurrentPassword" CssClass="col-md-2 control-label">Стара парола</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="CurrentPassword" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="CurrentPassword"
@@ -61,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" ID="NewPasswordLabel" AssociatedControlID="NewPassword" CssClass="col-md-2 control-label">New password</asp:Label>
+                        <asp:Label runat="server" ID="NewPasswordLabel" AssociatedControlID="NewPassword" CssClass="col-md-2 control-label">Нова парола</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="NewPassword" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
@@ -70,7 +69,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" ID="ConfirmNewPasswordLabel" AssociatedControlID="ConfirmNewPassword" CssClass="col-md-2 control-label">Confirm new password</asp:Label>
+                        <asp:Label runat="server" ID="ConfirmNewPasswordLabel" AssociatedControlID="ConfirmNewPassword" CssClass="col-md-2 control-label">Потвърждение на парола</asp:Label>
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="ConfirmNewPassword" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmNewPassword"
@@ -83,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <asp:Button runat="server" Text="Change Password" ValidationGroup="ChangePassword" OnClick="ChangePassword_Click" CssClass="btn btn-default" />
+                            <asp:Button runat="server" Text="Смяна на паролата" ValidationGroup="ChangePassword" OnClick="ChangePassword_Click" CssClass="btn btn-default" />
                         </div>
                     </div>
                 </div>

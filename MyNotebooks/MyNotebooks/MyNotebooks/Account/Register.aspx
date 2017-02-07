@@ -1,17 +1,17 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="MyNotebooks.Account.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
+    <h2>Регистрация</h2>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
 
     <div class="form-horizontal">
-        <h4>Create a new account</h4>
+        <h4>Създаване на нов акаунт</h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Имейл</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Парола</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Потвърждаване на парола</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
@@ -37,23 +37,23 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" Text="Upload Avatar" CssClass="col-md-2 control-label"></asp:Label>
+            <asp:Label runat="server" Text="Профилна снимка" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-10">
-                <asp:FileUpload ID="FileUploadControl" runat="server" />     
+                <asp:FileUpload ID="FileUploadControl" runat="server"  />     
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" Text="Choose role" CssClass="col-md-2 control-label"></asp:Label>
+            <asp:Label runat="server" Text="Роля" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList ID="Roles" runat="server" CssClass="form-control">
-                    <asp:ListItem Text="Student"></asp:ListItem>
-                    <asp:ListItem Text="Teacher"></asp:ListItem>
+                    <asp:ListItem Text="Ученик" Value="Student"></asp:ListItem>
+                    <asp:ListItem Text="Учител" Value="Teacher"></asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button ID="RegisterButton" runat="server" Text="Register" CssClass="btn btn-default" />
+                <asp:Button ID="RegisterButton" runat="server" Text="Регистрация" CssClass="btn btn-default" />
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ using MyNotebooks.Data.Repositories;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -99,6 +100,17 @@ namespace MyNotebooks.Tests.Data.Tests
             repo.Update(notebook, text);
 
             Assert.AreEqual(text, notebook.Content);
+        }
+
+        [Test]
+        public void NotebooksRepository_Should_Call_Find_When_Call_Find()
+        {
+            var mockDbSet = new Mock<DbSet<Notebook>>();
+            var DbContextMock = new Mock<INotebookDbContext>();
+            var repo = new NotebooksRepository();
+            repo.setNotebookDbContext(DbContextMock.Object);
+            
+            Assert.Throws<ArgumentNullException>(() => repo.Find("dsad", "fdsf", "dsfs"));
         }
     }
 }

@@ -182,5 +182,35 @@ namespace MyNotebooks.Tests.Core.Presenters.Tests
 
             Assert.AreSame(list, mockedView.Object.GetRelationships);
         }
+
+        [TestCase("English", "Английски език")]
+        [TestCase("Music", "Музика")]
+        public void TeacherPresenter_Should_CallTranslateSubject_When_Raise_Load(string english, string bulgarian)
+        {
+            var list = new List<Relationship>();
+
+            var mockedView = new Mock<ITeacherView>();
+            mockedView.SetupAllProperties();
+            mockedView.Setup(v => v.SetDropdown());
+            mockedView.SetupGet(v => v.Username).Returns("test");
+
+            var mockedService = new Mock<IRelationshipService>();
+            mockedService.SetupAllProperties();
+            mockedService.Setup(s => s.Find(It.IsAny<string>())).Returns(list);
+
+            var presenter = new TeacherPresenter(mockedView.Object, mockedService.Object);
+
+            mockedView.Raise(v => v.Load += null, new EventArgs());
+
+            var list2 = new List<Relationship>();
+            var item = new Relationship();
+            item.Subject = english;
+
+            list2.Add(item);
+
+            presenter.TranslateSubject(list2);
+
+            Assert.AreEqual(bulgarian, item.Subject);
+        }
     }
 }

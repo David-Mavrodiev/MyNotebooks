@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OpenAuthProviders.ascx.cs" Inherits="MyNotebooks.Account.OpenAuthProviders" %>
 
 <div id="socialLoginList">
-    <h4>Use another service to log in.</h4>
+    <h4>Вход чрез социална мрежа</h4>
     <hr />
     <asp:ListView runat="server" ID="providerDetails" ItemType="System.String"
         SelectMethod="GetProviderNames" ViewStateMode="Enabled">

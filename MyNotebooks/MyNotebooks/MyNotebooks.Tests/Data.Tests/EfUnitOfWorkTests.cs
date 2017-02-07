@@ -1,4 +1,6 @@
-﻿using MyNotebooks.Data.UnitOfWorks;
+﻿using Moq;
+using MyNotebooks.Data;
+using MyNotebooks.Data.UnitOfWorks;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -33,6 +35,27 @@ namespace MyNotebooks.Tests.Data.Tests
             EfUnitOfWork unitOfWork = new EfUnitOfWork();
 
             Assert.Throws<NullReferenceException>(() => unitOfWork.Dispose());
+        }
+
+        [Test]
+        public void EfUnitOfWork_Should_Not_Throw_When_Set_Context()
+        {
+            var context = new Mock<NotebooksDbContext>();
+            EfUnitOfWork unitOfWork = new EfUnitOfWork();
+
+            Assert.DoesNotThrow(() => unitOfWork.setContext(context.Object));
+        }
+
+        [Test]
+        public void EfUnitOfWork_Commit_Should_Call_SaveChanges()
+        {
+            var context = new Mock<NotebooksDbContext>();
+            context.Setup(c => c.SaveChanges());
+            EfUnitOfWork unitOfWork = new EfUnitOfWork();
+            unitOfWork.setContext(context.Object);
+            unitOfWork.Commit();
+
+            context.Verify(c => c.SaveChanges(), Times.Once);
         }
     }
 }

@@ -80,7 +80,7 @@ namespace MyNotebooks.Account
         {
             get
             {
-                return this.Roles.SelectedItem.Text;
+                return this.Roles.SelectedItem.Value;
             }
         }
 

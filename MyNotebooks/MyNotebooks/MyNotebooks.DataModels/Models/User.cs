@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using MyNotebooks.DataModels.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,7 @@ namespace MyNotebooks.DataModels.Models
 
         public User()
         {
-     
+
         }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)

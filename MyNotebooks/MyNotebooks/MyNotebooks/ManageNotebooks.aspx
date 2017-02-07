@@ -13,11 +13,16 @@
     </div>
     <div class="jumbotron">
         <div class="row">
+            <%if (this.GetNotebooks.Count <= 0)
+                { %>
+            <h3 style="color: red" class="text-center">За съжаление, до този момент нямате достъп до тетрадки!</h3>
+            <%} %>
             <% for (int i = 0; i < this.GetNotebooks.Count; i++)
                 { %>
             <div class="col-md-4">
                 <a href="/CheckNotebook?studentName=<%= this.GetNotebooks.ElementAt(i).StudentName%>&Subject=<%=this.Titles.FirstOrDefault(n => n.Key == this.GetNotebooks.ElementAt(i).Subject).Value  %>&Bg=<%= this.GetNotebooks.ElementAt(i).Subject %>">
                     <div class="thumbnail">
+                        <img style="width: 200px; height: 200px;" class="img-circle img-responsive" src="<%=Request.ApplicationPath + "Uploaded_Files/" + this.GetNotebooks.ElementAt(i).StudentName + ".png"  %>"/>
                         <div class="caption">
                             <p class="text-center"><%=this.GetNotebooks.ElementAt(i).Subject %></p>
                             <p class="text-center"><%=this.GetNotebooks.ElementAt(i).StudentName %></p>
