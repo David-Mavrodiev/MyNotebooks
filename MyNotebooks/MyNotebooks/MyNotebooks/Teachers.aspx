@@ -22,7 +22,7 @@
                 { %>
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <img style="width: 200px; height: 200px;" class="img-circle img-responsive" src="<%=Request.ApplicationPath + "Uploaded_Files/" + this.GetRelationships.ElementAt(i).TeacherName + ".png"  %>"/>
+                    <img style="width: 200px; height: 200px;" class="img-circle img-responsive profile-image" src="<%=Request.ApplicationPath + "Uploaded_Files/" + this.GetRelationships.ElementAt(i).TeacherName + ".png"  %>"/>
                     <div class="caption">
                         <p class="text-center"><%=this.GetRelationships.ElementAt(i).Subject %></p>
                         <p class="text-center"><%=this.GetRelationships.ElementAt(i).TeacherName %></p>

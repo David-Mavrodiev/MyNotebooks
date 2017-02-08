@@ -20,15 +20,13 @@
             <%} %>
             <% for (int i = 0; i < this.GetNotebooks.Count; i++)
                 { %>
-                <a href="/CheckNotebook?studentName=<%= this.GetNotebooks.ElementAt(i).StudentName%>&Subject=<%=this.Titles.FirstOrDefault(n => n.Key == this.GetNotebooks.ElementAt(i).Subject).Value  %>&Bg=<%= this.GetNotebooks.ElementAt(i).Subject %>">
-                    <div class="thumbnail" title="<%=this.GetNotebooks.ElementAt(i).StudentName %>">
-                        <img style="width: 200px; height: 200px;" class="img-circle img-responsive" src="<%=Request.ApplicationPath + "Uploaded_Files/" + this.GetNotebooks.ElementAt(i).StudentName + ".png"  %>"/>
+                    <a href="/CheckNotebook?studentName=<%= this.GetNotebooks.ElementAt(i).StudentName%>&Subject=<%=this.Titles.FirstOrDefault(n => n.Key == this.GetNotebooks.ElementAt(i).Subject).Value  %>&Bg=<%= this.GetNotebooks.ElementAt(i).Subject %>" class="thumbnail" title="<%=this.GetNotebooks.ElementAt(i).StudentName %>">
+                        <img style="width: 200px; height: 200px;" class="img-circle img-responsive profile-image" src="<%=Request.ApplicationPath + "Uploaded_Files/" + this.GetNotebooks.ElementAt(i).StudentName + ".png"  %>"/>
                         <div class="caption">
                             <p class="text-center"><%=this.GetNotebooks.ElementAt(i).Subject %></p>
                             <p class="text-center"><%=this.GetNotebooks.ElementAt(i).StudentName %></p>
                         </div>
-                    </div>
-                </a>
+                    </a>
             <%} %>
         </div>
     </div>

@@ -37,6 +37,9 @@ namespace MyNotebooks
             bundles.Add(new ScriptBundle("~/Scripts/Filter.js").Include(
                             "~/Scripts/Filter.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/CheckImage.js").Include(
+                            "~/Scripts/CheckImage.js"));
+
             ScriptManager.ScriptResourceMapping.AddDefinition(
                 "respond",
                 new ScriptResourceDefinition

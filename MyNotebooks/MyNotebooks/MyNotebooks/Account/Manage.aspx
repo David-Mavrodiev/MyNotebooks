@@ -26,7 +26,7 @@
                 </div>             
                 <div class="col-xs-12 col-sm-4 text-center">
                     <figure>
-                        <img class="img-circle img-responsive" src="<%=Request.ApplicationPath + "Uploaded_Files/" + Context.User.Identity.GetUserName() + ".png"  %>"/>
+                        <img class="img-circle img-responsive profile-image" src="<%=Request.ApplicationPath + "Uploaded_Files/" + Context.User.Identity.GetUserName() + ".png"  %>"/>
                         <figcaption class="ratings">
                             <p>Профилна снимка</p>
                         </figcaption>
